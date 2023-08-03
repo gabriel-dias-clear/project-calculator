@@ -36,11 +36,13 @@ class CalcController {
 
     clearAll(){
 
-
+        this._operation = []
 
     }
 
     clearEntry(){
+
+        this._operation.pop()
 
     }
 
@@ -56,35 +58,35 @@ class CalcController {
         switch (value){
             
             case 'ac':
-            this.clearAll();
+                this.clearAll();
             break;
 
             case 'ce':
-                this.clearAll();
+                this.clearEntry();
             break;
 
             case 'soma':
-                this.clearAll();
+          
             break;
 
             case 'subtracao':
-                this.clearAll();
+          
             break;
 
             case 'divisao':
-                this.clearAll();
+               
             break;
 
             case 'multiplicacao':
-                this.clearAll();
+        
             break;
 
             case 'porcento':
-                this.clearAll();
+                
             break;
 
             case 'igual':
-                this.clearAll();
+                
             break;
 
             default:
