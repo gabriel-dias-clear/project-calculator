@@ -1,6 +1,8 @@
 class CalcController {
 
      constructor(){
+
+        this._operation = []
         this._locale = 'pt-BR';
         this._dateEl = document.querySelector('#data');
         this._hourEl = document.querySelector('#hora');
@@ -32,7 +34,67 @@ class CalcController {
         })
      }
 
-    
+    clearAll(){
+
+
+
+    }
+
+    clearEntry(){
+
+    }
+
+    addOperation(value){
+        this._operation.push(value)
+    }
+
+    setError(){
+        this.displayCalc = 'Error'
+    }
+    execBtn(value){
+
+        switch (value){
+            
+            case 'ac':
+            this.clearAll();
+            break;
+
+            case 'ce':
+                this.clearAll();
+            break;
+
+            case 'soma':
+                this.clearAll();
+            break;
+
+            case 'subtracao':
+                this.clearAll();
+            break;
+
+            case 'divisao':
+                this.clearAll();
+            break;
+
+            case 'multiplicacao':
+                this.clearAll();
+            break;
+
+            case 'porcento':
+                this.clearAll();
+            break;
+
+            case 'igual':
+                this.clearAll();
+            break;
+
+            default:
+                this.setError();
+            break;
+        }
+
+    }
+
+
 
      initButton(){
 
@@ -42,7 +104,9 @@ class CalcController {
             
             this.addEventListenerAll(btn, 'click drag', e=>{
 
-                console.log(btn.className.baseVal.replace("btn-", ""))
+                let textBtn = btn.className.baseVal.replace("btn-", "")
+
+                this.execBtn(textBtn);
             
             })
 
