@@ -65,25 +65,50 @@ class CalcController {
 
     }
 
+    pushOperation(value){
+
+        this._operation.push(value);
+
+        if(this._operation.length > 3){
+
+            console.log(this._operation)
+
+        }
+
+    }
+
     addOperation(value){
 
         if(isNaN(this.getLastOperation())){
 
             if(this.isOperator(value)){
 
-                this._setLastOperation(value);
+                this.setLastOperation(value);
 
             } else if (isNaN(value)){
-                console.log(value)
+
+                console.log(`outra coisa: ${value}`)
 
             }else {
-            this._operation.push(value)
+
+            this.pushOperation(value)
 
             }
 
         } else {
-            let newValue = this.getLastOperation().toString() + value.toString();
-            this.setLastOperation(parseInt(newValue));
+
+            if(this.isOperator(value)){
+
+                this.pushOperation(value);
+
+            }else {
+
+                let newValue = this.getLastOperation().toString() + value.toString();
+                this.setLastOperation(parseInt(newValue));
+
+            }
+
+  
         }
 
       
