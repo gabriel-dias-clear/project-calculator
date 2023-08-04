@@ -457,9 +457,14 @@ class CalcController {
 
      }
 
-     set displayCalc(valor){
+     set displayCalc(value){
+
+        if(value.toString().length > 10){
+            this.setError()
+            return
+        }
         
-        this._dispayEl.innerHTML = valor;
+        this._dispayEl.innerHTML = value;
 
      }
 
@@ -469,9 +474,9 @@ class CalcController {
 
      }
 
-     set dataAtual(valor){
+     set dataAtual(value){
 
-        this._dataAtual = valor;
+        this._dataAtual = value;
 
      }
 
