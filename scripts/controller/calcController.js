@@ -17,6 +17,22 @@ class CalcController {
 
      }
 
+     copyMethod(){
+
+        /*let input = document.createElement('input');
+
+        input.value = this.displayCalc;
+
+        document.body.appendChild(input);
+
+        input.select();
+
+        document.execCommand('copy')
+
+        input.remove(); */
+
+     }
+
      init(){
 
         
@@ -71,6 +87,10 @@ class CalcController {
                 case '9':
                     this.addOperation(parseInt(e.key))
                 break;
+
+                case 'c':
+                    if(e.ctrlKey) this.copyMethod();
+                    break;
             }
 
         })
