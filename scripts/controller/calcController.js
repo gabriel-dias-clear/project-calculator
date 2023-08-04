@@ -1,11 +1,13 @@
 class CalcController {
 
      constructor(){
+        this._audio = new Audio('click.mp3');
+        this._audioOnOff = false;
 
-        this._lastOperator = ''
-        this._lastNumber = ''
+        this._lastOperator = '';
+        this._lastNumber = '';
 
-        this._operation = []
+        this._operation = [];
         this._locale = 'pt-BR';
         this._dateEl = document.querySelector('#data');
         this._hourEl = document.querySelector('#hora');
@@ -13,7 +15,7 @@ class CalcController {
         this._currDate;
         this.init();
         this.initButton();
-        this.keyboardInteract()
+        this.keyboardInteract();
 
      }
 
@@ -45,12 +47,36 @@ class CalcController {
 
         this.setLastNumberToDisplay()
 
+        document.querySelectorAll('.btn-ac').forEach(btn=>{
+            btn.addEventListener('dblclick', e=>{
+
+                this.toggleAudio();
+
+            })
+        })
+
+     }
+
+     toggleAudio(){
+        this._audioOnOff = !this._audioOnOff;
+
+     }
+
+     playAudio(){
+        
+        if(this._audioOnOff ){
+            this._audio.currentTime = 0;
+            this._audio.play()
+            
+        }
+
      }
 
      keyboardInteract(){
         document.addEventListener('keyup', e=> {
 
-            console.log(e.key)
+            this.playAudio();
+            
 
             switch (e.key){
             
@@ -308,6 +334,8 @@ class CalcController {
     }
 
     execBtn(value){
+
+        this.playAudio();
 
         switch (value){
             
